@@ -1,65 +1,72 @@
 ---
 name: gpt-4o-image
-description: Generate images with GPT-4o Image text-to-image through RunAPI.ai using the @runapi.ai/gpt-4o-image Node/TypeScript SDK. Use when the user asks for GPT-4o image generation, or writes against @runapi.ai/gpt-4o-image. Triggers on "gpt-4o-image", "GPT-4o Image", "gpt4o image", "@runapi.ai/gpt-4o-image".
-documentation: https://runapi.ai/models/gpt-4o-image
-provider_page: https://runapi.ai/providers/openai
-catalog: https://runapi.ai/models
+description: Generate and edit images with GPT-4o Image through RunAPI. Use when the user asks an agent to create, edit, or transform images with GPT-4o Image. Default to the RunAPI CLI for one-off generation; use SDKs only when the user is integrating RunAPI into an app or backend.
+documentation: https://runapi.ai/models/gpt-4o-image.md
+provider_page: https://runapi.ai/providers/openai.md
+catalog: https://runapi.ai/models.md
+metadata:
+  openclaw:
+    homepage: https://runapi.ai/models/gpt-4o-image
+    requires:
+      bins:
+      - runapi
+    install:
+    - kind: brew
+      formula: runapi-ai/tap/runapi
+      bins:
+      - runapi
+    envVars:
+    - name: RUNAPI_API_KEY
+      required: false
+      description: Optional RunAPI API key; agents should prefer environment auth or saved CLI config. Browser login is interactive fallback only.
 ---
-# @runapi.ai/gpt-4o-image -- RunAPI.ai GPT-4o Image generation
 
-Build Node / TypeScript integrations that generate images with GPT-4o Image through RunAPI.ai.
+# GPT-4o Image on RunAPI
 
-## Setup
+Generate and edit images with GPT-4o Image through RunAPI. The default path for one-off agent tasks is the `runapi` CLI; SDKs are for application integration.
 
-Requires **Node 18+** (global `fetch`).
+## Routing decision
 
-```bash
-npm install @runapi.ai/gpt-4o-image
+- One-off generation, editing, or transformation for the user → use the **CLI path** with the `runapi` binary.
+- Building an app, backend, worker, library, or production codebase → use the **SDK integration path**.
+
+## CLI path
+
+The `runapi` binary is the runtime dependency. Run `runapi auth status` first. For agents and headless runs, prefer `RUNAPI_API_KEY` or import it into saved config with `printf '%s' "$RUNAPI_API_KEY" | runapi auth import-token --token -`. Use `runapi login` only when the user explicitly wants interactive browser auth.
+
+Inspect the available actions and request fields with CLI help:
+
+```shell
+runapi gpt-4o-image --help
+runapi gpt-4o-image text-to-image --help
 ```
 
-```dotenv
-# .env
-RUNAPI_API_KEY=runapi_xxx   # get one at https://runapi.ai/settings/api_keys
+Run a one-off task (synchronous — polls until the task completes):
+
+```shell
+runapi gpt-4o-image text-to-image --input-file request.json
 ```
 
-```ts
-import { Gpt4oImageClient } from '@runapi.ai/gpt-4o-image';
+Submit asynchronously and poll separately:
 
-const client = new Gpt4oImageClient();
+```shell
+runapi gpt-4o-image text-to-image --async --input-file request.json
+runapi wait <task-id> --service gpt-4o-image --action text-to-image
 ```
 
-Pass `{ apiKey }` explicitly if you manage secrets differently. `baseUrl` defaults to `https://runapi.ai`; override only for local development.
+Available actions: `text-to-image`.
 
-## Resource
+## SDK integration path
 
-`client.textToImage` uses the async task contract:
+When integrating GPT-4o Image into an app, backend, worker, or library — not for one-off tasks — use a RunAPI SDK package:
 
-```ts
-const { id } = await client.textToImage.create({ ... });
-const status = await client.textToImage.get(id);
-const result = await client.textToImage.run({ ... });
-```
+- JavaScript / TypeScript: `@runapi.ai/gpt-4o-image`
+- Ruby: `runapi-gpt_4o_image`
+- Go: `github.com/runapi-ai/gpt-4o-image-sdk/go`
 
-## Text to image
+## References
 
-```ts
-const result = await client.textToImage.run({
-  model: 'gpt-4o-image',
-  prompt: 'A minimalist logo of a mountain range at sunset',
-});
+- Model overview, pricing, and rate limits: https://runapi.ai/models/gpt-4o-image.md
+- Provider comparison: https://runapi.ai/providers/openai.md
+- Full model catalog: https://runapi.ai/models.md
 
-const url = result.images[0].url;
-```
-
-## Errors
-
-All errors are re-exported from `@runapi.ai/core`. Use `instanceof` checks instead of string-matching messages. For long-running tasks, prefer `create()` plus webhook or `get(id)` in request handlers, and reserve `run()` for jobs / CLI.
-
-## RunAPI public routing
-
-gpt-4o image api public links use the API-379 catalog route map. The main gpt-4o image api page is https://runapi.ai/models/gpt-4o-image. SDK docs live at https://runapi.ai/docs#sdk-gpt-4o-image and product docs live at https://runapi.ai/docs#gpt-4o-image.
-
-Pricing, rate limits, and commercial usage for gpt-4o image api should point to the most specific variant page:
-- [GPT-4o Image](https://runapi.ai/models/gpt-4o-image/gpt-4o-image)
-
-Compare GPT-4o Image with other OpenAI models at https://runapi.ai/providers/openai. Browse every RunAPI model and skill at https://runapi.ai/models. SDK repository: https://github.com/runapi-ai/gpt-4o-image-sdk. Skill repository: https://github.com/runapi-ai/gpt-4o-image.
