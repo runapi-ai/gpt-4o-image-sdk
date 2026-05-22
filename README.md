@@ -1,4 +1,24 @@
-# GPT-4o Image API SDK for RunAPI
+<p align="center">
+  <a href="https://runapi.ai"><img src="https://runapi.ai/icon.svg" height="56" alt="RunAPI"></a>
+</p>
+
+<h3 align="center">
+  <a href="https://github.com/runapi-ai/gpt-4o-image-sdk">GPT-4o Image API SDK for RunAPI</a>
+</h3>
+
+<p align="center">
+  GPT-4o Image API SDKs for JavaScript, Ruby, and Go on RunAPI.
+</p>
+
+<div align="center">
+
+[![npm](https://img.shields.io/npm/v/@runapi.ai/gpt-4o-image)](https://www.npmjs.com/package/@runapi.ai/gpt-4o-image)
+[![RubyGems](https://img.shields.io/gem/v/runapi-gpt-4o-image)](https://rubygems.org/gems/runapi-gpt-4o-image)
+[![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/gpt-4o-image-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/gpt-4o-image-sdk/go)
+[![License](https://img.shields.io/github/license/runapi-ai/gpt-4o-image-sdk)](https://github.com/runapi-ai/gpt-4o-image-sdk/blob/main/LICENSE)
+
+</div>
+<br/>
 
 The gpt-4o image api SDK packages JavaScript, Ruby, and Go clients for GPT-4o Image on RunAPI. Use this gpt-4o image api SDK for text-to-image generation workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
 
@@ -8,7 +28,7 @@ GPT-4o Image belongs to the OpenAI catalog on RunAPI. The public model page is h
 
 ```bash
 npm install @runapi.ai/gpt-4o-image
-gem install runapi-gpt_4o_image
+gem install runapi-gpt-4o-image
 go get github.com/runapi-ai/gpt-4o-image-sdk/go@latest
 ```
 
@@ -40,7 +60,7 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 ## Repository layout
 
 - `js/` publishes `@runapi.ai/gpt-4o-image`.
-- `ruby/` publishes `runapi-gpt_4o_image` when RubyGems publishing resumes.
+- `ruby/` publishes `runapi-gpt-4o-image` when RubyGems publishing resumes.
 - `go/` publishes `github.com/runapi-ai/gpt-4o-image-sdk/go` and depends on `github.com/runapi-ai/core-sdk/go`.
 
 ## Public links
@@ -56,19 +76,19 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 ## Pricing and variants
 
 Use the most specific gpt-4o image api variant page for pricing, rate limits, and commercial usage:
-- [GPT-4o Image](https://runapi.ai/models/gpt-4o-image/gpt-4o-image)
+- [GPT-4o Image](https://runapi.ai/models/gpt-4o-image)
 
-Default pricing link for the gpt-4o image api SDK: https://runapi.ai/models/gpt-4o-image/gpt-4o-image
+Default pricing link for the gpt-4o image api SDK: https://runapi.ai/models/gpt-4o-image
 
 ## FAQ
 
 ### Which package should I install for gpt-4o image api work?
 
-Install the model package for your language: `@runapi.ai/gpt-4o-image`, `runapi-gpt_4o_image`, or `github.com/runapi-ai/gpt-4o-image-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
+Install the model package for your language: `@runapi.ai/gpt-4o-image`, `runapi-gpt-4o-image`, or `github.com/runapi-ai/gpt-4o-image-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
 
 ### Where should public links point?
 
-Primary gpt-4o image api links point to https://runapi.ai/models/gpt-4o-image. Pricing and usage-policy links point to variant pages such as https://runapi.ai/models/gpt-4o-image/gpt-4o-image. Provider comparisons point to https://runapi.ai/providers/openai, and broad browsing points to https://runapi.ai/models.
+Primary gpt-4o image api links point to https://runapi.ai/models/gpt-4o-image. Pricing and usage-policy links point to variant pages such as https://runapi.ai/models/gpt-4o-image. Provider comparisons point to https://runapi.ai/providers/openai, and broad browsing points to https://runapi.ai/models.
 
 ## License
 
