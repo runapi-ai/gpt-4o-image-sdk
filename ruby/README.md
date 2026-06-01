@@ -1,6 +1,6 @@
 # GPT-4o Image API Ruby SDK for RunAPI
 
-The gpt-4o image api Ruby SDK is the language-specific package for GPT-4o Image on RunAPI. Use this gpt-4o image api package for text-to-image, image-to-image, edit, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Ruby.
+The gpt-4o image api Ruby SDK is the language-specific package for GPT-4o Image on RunAPI. Use this gpt-4o image api package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Ruby.
 
 This gpt-4o image api README is the Ruby package guide inside the public `gpt4o-image-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/gpt-4o-image; for API reference, use https://runapi.ai/docs#gpt-4o-image; for SDK docs, use https://runapi.ai/docs#sdk-gpt-4o-image.
 

@@ -20,22 +20,18 @@ describe('Gpt4oImage TextToImage', () => {
     const result = await textToImage.create({
       model: 'gpt-4o-image',
       prompt: 'A still life',
-      size: '1:1',
-      files_url: ['https://example.com/input.png'],
-      n_variants: 2,
-      enable_fallback: true,
-      fallback_model: 'FLUX_MAX',
+      aspect_ratio: '1:1',
+      source_image_urls: ['https://cdn.runapi.ai/public/samples/input.png'],
+      output_count: 2,
     });
 
     expect(mockHttp.request).toHaveBeenCalledWith('POST', '/api/v1/gpt_4o_image/text_to_image', {
       body: {
         model: 'gpt-4o-image',
         prompt: 'A still life',
-        size: '1:1',
-        files_url: ['https://example.com/input.png'],
-        n_variants: 2,
-        enable_fallback: true,
-        fallback_model: 'FLUX_MAX',
+        aspect_ratio: '1:1',
+        source_image_urls: ['https://cdn.runapi.ai/public/samples/input.png'],
+        output_count: 2,
       },
     });
     expect(result).toEqual(mockResponse);
@@ -56,4 +52,5 @@ describe('Gpt4oImage TextToImage', () => {
     expect(mockHttp.request).toHaveBeenCalledWith('GET', '/api/v1/gpt_4o_image/text_to_image/task-gen-456', {});
     expect(result).toEqual(mockResponse);
   });
+
 });

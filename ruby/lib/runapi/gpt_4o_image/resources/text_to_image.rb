@@ -34,16 +34,15 @@ module RunApi
 
         def validate_params!(params)
           raise Core::ValidationError, "model is required" unless param(params, :model)
-          raise Core::ValidationError, "size is required" unless param(params, :size)
+          raise Core::ValidationError, "aspect_ratio is required" unless param(params, :aspect_ratio)
 
           model = param(params, :model)
           unless Types::MODELS.include?(model)
             raise Core::ValidationError, "Invalid model: #{model}. Must be: #{Types::MODELS.join(", ")}"
           end
 
-          validate_optional!(params, :size, Types::SIZES)
-          validate_optional!(params, :n_variants, Types::N_VARIANTS)
-          validate_optional!(params, :fallback_model, Types::FALLBACK_MODELS)
+          validate_optional!(params, :aspect_ratio, Types::ASPECT_RATIOS)
+          validate_optional!(params, :output_count, Types::OUTPUT_COUNTS)
         end
       end
     end

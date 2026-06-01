@@ -34,7 +34,7 @@ Generate and edit images with GPT-4o Image through RunAPI. The default path for 
 
 The `runapi` binary is the runtime dependency. Run `runapi auth status` first. For agents and headless runs, prefer `RUNAPI_API_KEY` or import it into saved config with `printf '%s' "$RUNAPI_API_KEY" | runapi auth import-token --token -`. Use `runapi login` only when the user explicitly wants interactive browser auth.
 
-Inspect the available actions and request fields with CLI help:
+Inspect the available commands and request fields with CLI help:
 
 ```shell
 runapi gpt-4o-image --help
@@ -54,7 +54,7 @@ runapi gpt-4o-image text-to-image --async --input-file request.json
 runapi wait <task-id> --service gpt-4o-image --action text-to-image
 ```
 
-Available actions: `text-to-image`.
+Available commands: `text-to-image`.
 
 ## SDK integration path
 

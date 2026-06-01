@@ -1,23 +1,18 @@
 import type { AsyncTaskStatus } from '@runapi.ai/core';
 
 export type Gpt4oImageModel = 'gpt-4o-image';
-export type ImageSize = '1:1' | '3:2' | '2:3';
-export type VariantCount = 1 | 2 | 4;
-export type FallbackModel = 'GPT_IMAGE_1' | 'FLUX_MAX';
+export type AspectRatio = '1:1' | '3:2' | '2:3';
+export type OutputCount = 1 | 2 | 4;
 
 export interface TextToImageParams {
   model: Gpt4oImageModel;
   prompt?: string;
-  size: ImageSize;
-  files_url?: string[];
+  aspect_ratio: AspectRatio;
+  source_image_urls?: string[];
   mask_url?: string;
-  n_variants?: VariantCount;
+  output_count?: OutputCount;
   callback_url?: string;
-  is_enhance?: boolean;
-  upload_cn?: boolean;
-  enable_fallback?: boolean;
-  fallback_model?: FallbackModel;
-  file_url?: string;
+  enable_prompt_expansion?: boolean;
 }
 
 export interface TaskCreateResponse {
