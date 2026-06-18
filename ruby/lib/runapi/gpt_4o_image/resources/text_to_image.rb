@@ -3,6 +3,8 @@
 module RunApi
   module Gpt4oImage
     module Resources
+      # GPT-4o Image generation and editing resource.
+      # Generate images from text, edit with source images, or inpaint with a mask.
       class TextToImage
         include RunApi::Core::ResourceHelpers
 
