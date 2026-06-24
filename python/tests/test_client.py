@@ -116,7 +116,7 @@ def test_run_polls_and_narrows_completed_type():
 
 def test_create_requires_model():
     client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="model is required"):
+    with pytest.raises(ValidationError, match="model must be one of: gpt-4o-image"):
         client.text_to_image.create(aspect_ratio="1:1")
 
 
@@ -128,19 +128,19 @@ def test_create_requires_aspect_ratio():
 
 def test_create_rejects_unknown_model():
     client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match=r"Invalid model: not-a-model\. Must be: gpt-4o-image"):
+    with pytest.raises(ValidationError, match="model must be one of: gpt-4o-image"):
         client.text_to_image.create(model="not-a-model", aspect_ratio="1:1")
 
 
 def test_create_rejects_invalid_aspect_ratio():
     client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="Invalid aspect_ratio"):
+    with pytest.raises(ValidationError, match="aspect_ratio must be one of: 1:1, 3:2, 2:3"):
         client.text_to_image.create(model="gpt-4o-image", aspect_ratio="99:1")
 
 
 def test_create_rejects_invalid_output_count():
     client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="Invalid output_count"):
+    with pytest.raises(ValidationError, match="output_count must be one of: 1, 2, 4"):
         client.text_to_image.create(
             model="gpt-4o-image", aspect_ratio="1:1", output_count=3
         )
