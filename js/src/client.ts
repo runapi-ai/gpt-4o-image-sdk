@@ -24,7 +24,7 @@ import { TextToImage } from './resources/text-to-image';
  *   model: 'gpt-4o-image',
  *   prompt: 'Add a rainbow',
  *   aspect_ratio: '3:2',
- *   source_image_urls: ['https://example.com/photo.jpg'],
+ *   source_image_urls: ['https://cdn.runapi.ai/public/samples/image.jpg'],
  * });
  * ```
  */
