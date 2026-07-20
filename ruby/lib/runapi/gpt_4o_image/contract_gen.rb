@@ -14,6 +14,9 @@ module RunApi
             "output_count" => {
               "enum" => [1, 2, 4],
               "type" => "integer"
+            },
+            "source_image_urls" => {
+              "max_items" => 5
             }
           }
         }

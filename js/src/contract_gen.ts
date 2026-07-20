@@ -20,6 +20,9 @@ export const contract = {
             4
           ],
           "type": "integer"
+        },
+        "source_image_urls": {
+          "max_items": 5
         }
       }
     }

@@ -3,8 +3,8 @@
   "runapi": {
     "slug": "gpt-4o-image"
   },
-  "version": "0.2.7",
-  "description": "RunAPI GPT-4o Image SDK for text-to-image generation workflows in JavaScript, Python, Ruby, Go, and Java",
+  "version": "0.2.8",
+  "description": "RunAPI GPT-4o Image SDK for text-to-image generation workflows in JavaScript, Python, Ruby, Go, Java, and PHP",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -30,7 +30,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@runapi.ai/core": "^0.2.7"
+    "@runapi.ai/core": "^0.2.14"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

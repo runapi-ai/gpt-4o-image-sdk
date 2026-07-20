@@ -7,13 +7,13 @@ This README is the Ruby package guide inside the public `gpt-4o-image-sdk` repos
 ## Install
 
 ```bash
-gem install runapi-gpt_4o_image
+gem install runapi-gpt-4o-image
 ```
 
 ## Quick start
 
 ```ruby
-require "runapi-gpt_4o_image"
+require "runapi/gpt_4o_image"
 
 client = RunApi::Gpt4oImage::Client.new
 task = client.text_to_image.create(

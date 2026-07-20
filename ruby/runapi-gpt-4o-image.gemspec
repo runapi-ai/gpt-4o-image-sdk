@@ -3,8 +3,8 @@
 Dir.chdir(__dir__) do
 
   Gem::Specification.new do |spec|
-    spec.name = "runapi-gpt_4o_image"
-    spec.version = "0.2.7"
+    spec.name = "runapi-gpt-4o-image"
+    spec.version = "0.2.8"
     spec.metadata["runapi_slug"] = "gpt-4o-image"
     spec.authors = ["RunAPI"]
     spec.email = ["contact@runapi.ai"]
@@ -25,6 +25,6 @@ Dir.chdir(__dir__) do
     spec.extra_rdoc_files = ["README.md"]
         spec.require_paths = ["lib"]
 
-    spec.add_dependency "runapi-core", "~> 0.2.7"
+    spec.add_dependency "runapi-core", "~> 0.2.14"
   end
 end
