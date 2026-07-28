@@ -2,7 +2,7 @@
 
 The GPT-4o Image JavaScript SDK is the language-specific package for GPT-4o Image on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in JavaScript.
 
-This README is the JavaScript package guide inside the public `gpt-4o-image-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/gpt-4o-image; for API reference, use https://runapi.ai/docs#gpt-4o-image; for SDK docs, use https://runapi.ai/docs#sdk-gpt-4o-image.
+This README is the JavaScript package guide inside the public `gpt-4o-image-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/gpt-4o-image; for API reference, use https://runapi.ai/docs/api/gpt-4o-image/text-to-image; for SDK docs, use https://runapi.ai/docs/resources/sdks.
 
 ## Install
 
@@ -17,7 +17,7 @@ import { Gpt4oImageClient } from '@runapi.ai/gpt-4o-image';
 
 const client = new Gpt4oImageClient();
 const task = await client.textToImage.create({
-  // Pass the GPT-4o Image JSON request body from https://runapi.ai/docs#gpt-4o-image.
+  // Pass the GPT-4o Image JSON request body from https://runapi.ai/docs/api/gpt-4o-image/text-to-image.
 });
 const status = await client.textToImage.get(task.id);
 ```
@@ -33,8 +33,8 @@ Use the TypeScript types in `src/types.ts` and the resource classes under `src/r
 ## Links
 
 - Model page: https://runapi.ai/models/gpt-4o-image
-- SDK docs: https://runapi.ai/docs#sdk-gpt-4o-image
-- Product docs: https://runapi.ai/docs#gpt-4o-image
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/gpt-4o-image/text-to-image
 - Pricing and rate limits: https://runapi.ai/models/gpt-4o-image
 - Provider comparison: https://runapi.ai/providers/openai
 - Full catalog: https://runapi.ai/models

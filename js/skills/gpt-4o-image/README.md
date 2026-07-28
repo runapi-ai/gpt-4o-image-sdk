@@ -60,8 +60,8 @@ const url = result.images[0].url;
 ## Routing
 
 - Model page: https://runapi.ai/models/gpt-4o-image
-- Product docs: https://runapi.ai/docs#gpt-4o-image
-- SDK docs: https://runapi.ai/docs#sdk-gpt-4o-image
+- Product docs: https://runapi.ai/docs/api/gpt-4o-image/text-to-image
+- SDK docs: https://runapi.ai/docs/resources/sdks
 - SDK repository: https://github.com/runapi-ai/gpt-4o-image-sdk
 - Pricing and rate limits: https://runapi.ai/models/gpt-4o-image
 - Provider comparison: https://runapi.ai/providers/openai
