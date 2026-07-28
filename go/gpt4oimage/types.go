@@ -1,5 +1,7 @@
 package gpt4oimage
 
+import "github.com/runapi-ai/core-sdk/go/core"
+
 // TaskStatus is the async task lifecycle state (e.g. "processing", "completed", "failed").
 type TaskStatus string
 
@@ -23,6 +25,7 @@ type TextToImageParams struct {
 // AsyncTaskResponse carries the task ID, lifecycle status, and error for GPT-4o Image async operations.
 // Progress may contain an intermediate status string while the task is running.
 type AsyncTaskResponse struct {
+	core.TaskBillingFacts
 	ID       string     `json:"id"`
 	Status   TaskStatus `json:"status"`
 	Progress string     `json:"progress,omitempty"`
