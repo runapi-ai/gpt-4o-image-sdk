@@ -1,4 +1,4 @@
-import type { AsyncTaskStatus, TaskBillingResponse, TaskResponse } from '@runapi.ai/core';
+import type { AsyncTaskStatus, TaskResponse } from '@runapi.ai/core';
 
 export type Gpt4oImageModel = 'gpt-4o-image';
 /** Required output aspect ratio. */
@@ -30,7 +30,7 @@ export interface TextToImageParams {
   enable_prompt_expansion?: boolean;
 }
 
-export interface TaskCreateResponse extends TaskBillingResponse {
+export interface TaskCreateResponse {
   id: string;
   status: string;
 }

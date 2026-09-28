@@ -32,8 +32,7 @@ func TestTextToImageCreate(t *testing.T) {
 		Prompt:          "a still life",
 		AspectRatio:     "1:1",
 		SourceImageURLs: []string{"https://cdn.runapi.ai/public/samples/input.png"},
-		OutputCount:     2,
-	})
+		OutputCount:     2})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -75,7 +74,7 @@ func TestTextToImageCreate(t *testing.T) {
 }
 
 func TestTextToImageGet(t *testing.T) {
-	stub := &stubHTTPClient{response: json.RawMessage(`{"id":"task_gen_456","status":"completed","progress":"1.00","images":[{"url":"https://file.runapi.ai/result.png"}]}`)}
+	stub := &stubHTTPClient{response: json.RawMessage(`{"id":"task_gen_456","status":"completed", "usage": {"cost": 0.05},"progress":"1.00","images":[{"url":"https://file.runapi.ai/result.png"}]}`)}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.TextToImage.Get(context.Background(), "task_gen_abc")
 	if err != nil {

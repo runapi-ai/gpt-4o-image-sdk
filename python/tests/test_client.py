@@ -83,8 +83,7 @@ def test_create_posts_compacted_body():
             "post",
             "/api/v1/gpt_4o_image/text_to_image",
             {"model": "gpt-4o-image", "prompt": "hello", "aspect_ratio": "1:1"},
-        ),
-    ]
+        )]
     assert isinstance(result, TextToImageResponse)
     assert result.id == "t1"
 
@@ -99,7 +98,7 @@ def test_get_fetches_by_id():
 def test_run_polls_and_narrows_completed_type():
     fake = FakeHttp(
         {"id": "t1", "status": "pending"},
-        {"id": "t1", "status": "completed", "images": [{"url": "https://x/y.png"}]},
+        {"id": "t1", "status": "completed", "usage": {"cost": 0.05}, "images": [{"url": "https://x/y.png"}]},
     )
     client = Gpt4oImageClient(api_key="k", http_client=fake)
     result = client.text_to_image.run(
