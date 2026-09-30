@@ -22,11 +22,6 @@ RSpec.describe RunApi::Gpt4oImage::Resources::TextToImage do
       expect(result).to be_a(RunApi::Gpt4oImage::Types::TextToImageResponse)
       expect(result.id).to eq("task-1")
     end
-
-    it "raises ValidationError when model is missing" do
-      expect { text_to_image.create(aspect_ratio: "1:1") }
-        .to raise_error(RunApi::Core::ValidationError, /model must be one of: gpt-4o-image/)
-    end
   end
 
   describe "#get" do

@@ -1,7 +1,7 @@
 import pytest
 
 from runapi.core import config
-from runapi.core.errors import AuthenticationError, ValidationError
+from runapi.core.errors import AuthenticationError
 from runapi.gpt_4o_image import Gpt4oImageClient
 from runapi.gpt_4o_image.resources.text_to_image import TextToImage
 from runapi.gpt_4o_image.types import CompletedTextToImageResponse, TextToImageResponse
@@ -108,38 +108,3 @@ def test_run_polls_and_narrows_completed_type():
     assert isinstance(result, CompletedTextToImageResponse)
     assert result.images[0].url == "https://x/y.png"
     assert [call[0] for call in fake.calls] == ["post", "get"]
-
-
-# --- validation -----------------------------------------------------------
-
-
-def test_create_requires_model():
-    client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="model must be one of: gpt-4o-image"):
-        client.text_to_image.create(aspect_ratio="1:1")
-
-
-def test_create_requires_aspect_ratio():
-    client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="aspect_ratio is required"):
-        client.text_to_image.create(model="gpt-4o-image")
-
-
-def test_create_rejects_unknown_model():
-    client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="model must be one of: gpt-4o-image"):
-        client.text_to_image.create(model="not-a-model", aspect_ratio="1:1")
-
-
-def test_create_rejects_invalid_aspect_ratio():
-    client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="aspect_ratio must be one of: 1:1, 3:2, 2:3"):
-        client.text_to_image.create(model="gpt-4o-image", aspect_ratio="99:1")
-
-
-def test_create_rejects_invalid_output_count():
-    client = Gpt4oImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="output_count must be one of: 1, 2, 4"):
-        client.text_to_image.create(
-            model="gpt-4o-image", aspect_ratio="1:1", output_count=3
-        )

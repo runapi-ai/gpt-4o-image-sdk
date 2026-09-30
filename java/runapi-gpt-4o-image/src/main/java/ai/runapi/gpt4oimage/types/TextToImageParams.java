@@ -18,7 +18,7 @@ public final class TextToImageParams {
   private TextToImageParams(Builder builder) {
     this.model = builder.model;
     this.prompt = builder.prompt;
-    this.aspectRatio = Gpt4oimageParamUtils.requireNonBlank(builder.aspectRatio, "aspectRatio");
+    this.aspectRatio = builder.aspectRatio;
     this.sourceImageUrls = Gpt4oimageParamUtils.strings(builder.sourceImageUrls);
     this.maskUrl = builder.maskUrl;
     this.outputCount = builder.outputCount;
@@ -73,20 +73,20 @@ public final class TextToImageParams {
 
     /** Sets the model slug using a string value. */
     public Builder model(String value) {
-      this.model = Gpt4oimageParamUtils.requireNonBlankTrim(value, "model");
+      this.model = value;
       return this;
     }
 
 
     /** Sets the text prompt. */
     public Builder prompt(String value) {
-      this.prompt = Gpt4oimageParamUtils.requireNonBlank(value, "prompt");
+      this.prompt = value;
       return this;
     }
 
     /** Sets the output aspect ratio. */
     public Builder aspectRatio(String value) {
-      this.aspectRatio = Gpt4oimageParamUtils.requireNonBlank(value, "aspectRatio");
+      this.aspectRatio = value;
       return this;
     }
 
@@ -98,7 +98,7 @@ public final class TextToImageParams {
 
     /** Sets the mask URL. */
     public Builder maskUrl(String value) {
-      this.maskUrl = Gpt4oimageParamUtils.requireNonBlank(value, "maskUrl");
+      this.maskUrl = value;
       return this;
     }
 
@@ -110,7 +110,7 @@ public final class TextToImageParams {
 
     /** Sets the webhook URL for task completion notifications. */
     public Builder callbackUrl(String value) {
-      this.callbackUrl = Gpt4oimageParamUtils.requireNonBlank(value, "callbackUrl");
+      this.callbackUrl = value;
       return this;
     }
 
